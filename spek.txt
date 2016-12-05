@@ -1,0 +1,36 @@
+-Power management: unlikely to get much better without a true regulator and a
+bag style power bank
+-gps
+-magnetic/accelerometer sensors
+-RTC
+-pulse sensor
+-pressure/temperature sensors (adafruit version over i2c 4.95)
+-commercial radio receiver
+-3G/cellular capability
+-microphone pickup
+-speakers
+-light sensitive resistor
+-adafruit gas sensor (CO, Ammonia, ethanol, H2, methane/propane/iso-butane)
+https://www.adafruit.com/products/3199
+-adafruit has a ultrasonic rangefinder, but expensive 24.95
+
+-ad hoc uSD slot for rapid backups
+
+-small capacity lipo power system that the battery pack feeds into for 
+flexibility in providing power
+
+-Read thumbstick with MCP3008 analog converter
+
+-RPI camera board (norm or IR?)
+
+-infrared send and receive
+
+-adafruit has a ESR that might work for the o button
+https://www.adafruit.com/products/166
+
+
+- squeeze a millimeter or two more of pin height in order to fit the project
+without pressure on the case
+
+
+
