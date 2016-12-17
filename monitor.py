@@ -21,7 +21,7 @@ def clearTerminal(x):
 
 if(__name__ == "__main__"):
 	wiringpi.wiringPiSetup()
-	pinsRange = [25, 24, 23, 22, 21]
+	pinsRange = [25, 24, 23, 22, 21] + [26, 27, 28, 29]
 	
 	
 	events = (uinput.REL_X, uinput.REL_Y, uinput.BTN_LEFT, uinput.BTN_RIGHT,)
