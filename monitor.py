@@ -32,10 +32,13 @@ if(__name__ == "__main__"):
 
 
 	with uinput.Device(events) as device:
+		device.emit(uinput.REL_Y, -100)
+		## move the mouse up so we can effectively check if this is working
+		## as intended
 		while(True):
 			for i in pinsRange:
 				print "%i: %r" % (i, wiringpi.digitalRead(i))
-			time.sleep(0.01)
+			time.sleep(0.05)
 			
 			if(wiringpi.digitalRead(25)):
 				device.emit(uinput.REL_Y, 1)
