@@ -21,7 +21,7 @@ def clearTerminal(x):
 
 if(__name__ == "__main__"):
 	wiringpi.wiringPiSetup()
-	pinsRange = range(1, 20)
+	pinsRange = [25, 24, 23, 22, 21]
 	
 	for i in pinsRange:
 		wiringpi.pinMode(i, 0)
