@@ -41,6 +41,6 @@ if(__name__ == "__main__"):
 			time.sleep(0.05)
 			
 			if(wiringpi.digitalRead(25)):
-				device.emit(uinput.REL_Y, 1)
+				device.emit(uinput.REL_Y, 5)
 			##device.emit(uinput.REL_X, 5, syn=False)
 			sys.stdout.write("\x1b[2J\x1b[H");
