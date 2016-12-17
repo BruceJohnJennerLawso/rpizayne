@@ -35,9 +35,9 @@ if(__name__ == "__main__"):
 		while(True):
 			for i in pinsRange:
 				print "%i: %r" % (i, wiringpi.digitalRead(i))
-			time.sleep(0.1)
+			time.sleep(0.01)
 			
 			if(wiringpi.digitalRead(25)):
-				device.emit(uinput.REL_Y, 5)
+				device.emit(uinput.REL_Y, 1)
 			##device.emit(uinput.REL_X, 5, syn=False)
 			sys.stdout.write("\x1b[2J\x1b[H");
