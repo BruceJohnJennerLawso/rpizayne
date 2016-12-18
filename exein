@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo modprobe uinput
+sudo python monitor.py
+
+exit 0
