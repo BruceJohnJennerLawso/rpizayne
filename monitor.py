@@ -20,6 +20,11 @@ def clearTerminal(x):
 
 
 if(__name__ == "__main__"):
+	## remember to run
+	
+	## sudo modprobe uinput
+	
+	## before running this script
 	wiringpi.wiringPiSetup()
 	pinsRange = [25, 24, 23, 22, 21] + [26, 27, 28, 29]
 	
@@ -52,6 +57,13 @@ if(__name__ == "__main__"):
 			if(wiringpi.digitalRead(29)):
 				device.emit(uinput.REL_Y, -5)
 				## up
-					
+				
+				
+			if(wiringpi.digitalRead(28)):
+				device.emit(uinput.BTN_LEFT)
+				## up	
+			if(wiringpi.digitalRead(27)):
+				device.emit(uinput.BTN_RIGHT)
+				## up		
 			##device.emit(uinput.REL_X, 5, syn=False)
 			sys.stdout.write("\x1b[2J\x1b[H");
