@@ -60,10 +60,10 @@ if(__name__ == "__main__"):
 				
 				
 			if(wiringpi.digitalRead(28)):
-				device.emit(uinput.BTN_LEFT, 1)
+				device.emit_click(uinput.BTN_LEFT)
 				## up	
 			if(wiringpi.digitalRead(27)):
-				device.emit(uinput.BTN_RIGHT, 1)
+				device.emit_click(uinput.BTN_RIGHT)
 				## up		
 			##device.emit(uinput.REL_X, 5, syn=False)
 			sys.stdout.write("\x1b[2J\x1b[H");
