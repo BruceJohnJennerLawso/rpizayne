@@ -45,24 +45,24 @@ if(__name__ == "__main__"):
 				print "%i: %r" % (i, wiringpi.digitalRead(i))
 			time.sleep(0.05)
 			
-			if(wiringpi.digitalRead(25)):
+			if(wiringpi.digitalRead(29)):
 				device.emit(uinput.REL_X, -5)
 				## left	
 			if(wiringpi.digitalRead(24)):
 				device.emit(uinput.REL_X, 5)	
 				## right	
-			if(wiringpi.digitalRead(23)):
+			if(wiringpi.digitalRead(28)):
 				device.emit(uinput.REL_Y, 5)
 				## down
-			if(wiringpi.digitalRead(29)):
+			if(wiringpi.digitalRead(27)):
 				device.emit(uinput.REL_Y, -5)
 				## up
 				
 				
-			if(wiringpi.digitalRead(28)):
+			if(wiringpi.digitalRead(22)):
 				device.emit_click(uinput.BTN_LEFT)
 				## up	
-			if(wiringpi.digitalRead(26)):
+			if(wiringpi.digitalRead(23)):
 				device.emit_click(uinput.BTN_RIGHT)
 				## up		
 			##device.emit(uinput.REL_X, 5, syn=False)
