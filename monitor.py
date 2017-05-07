@@ -26,10 +26,10 @@ if(__name__ == "__main__"):
 	
 	## before running this script
 	wiringpi.wiringPiSetup()
-	pinsRange = [25, 24, 23, 22, 21] + [26, 27, 28, 29]
+	pinsRange = [21, 22, 23, 24, 25, 26, 27, 28, 29]
 	
 	
-	events = (uinput.REL_X, uinput.REL_Y, uinput.BTN_LEFT, uinput.BTN_RIGHT,)
+	events = (uinput.REL_X, uinput.REL_Y, uinput.BTN_LEFT, uinput.BTN_RIGHT, uinput.KEY_ESC)
 	
 	for i in pinsRange:
 		wiringpi.pinMode(i, 0)
@@ -59,11 +59,14 @@ if(__name__ == "__main__"):
 				## up
 				
 				
-			if(wiringpi.digitalRead(24)):
+			if(not wiringpi.digitalRead(22)):
 				device.emit_click(uinput.BTN_LEFT)
 				## up	
-			if(wiringpi.digitalRead(23)):
+			if(wiringpi.digitalRead(24)):
 				device.emit_click(uinput.BTN_RIGHT)
+				## up	
+			if(wiringpi.digitalRead(23)):
+				device.emit_click(uinput.KEY_ESC)
 				## up		
 			##device.emit(uinput.REL_X, 5, syn=False)
 			sys.stdout.write("\x1b[2J\x1b[H");
