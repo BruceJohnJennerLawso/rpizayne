@@ -20,11 +20,11 @@ def clearTerminal(x):
 
 
 def getNextControlMode(currentControlMode, controlModes):
-	for i in range(0, len(controlModes.keys())):
-		if(i >= len(controlModes.keys())-1):
-			return 0
-		else:
-			return currentControlMode+1
+	
+	if((currentControlMode) == max(controlModes.keys())):
+		return 0
+	else:
+		return currentControlMode+1
 
 if(__name__ == "__main__"):
 	## remember to run
