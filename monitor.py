@@ -52,11 +52,13 @@ if(__name__ == "__main__"):
 		while(True):
 			for i in pinsRange:
 				print "%i: %r" % (i, wiringpi.digitalRead(i))
-			time.sleep(0.10)
+			time.sleep(0.07)
 			
 			
 			if( (not wiringpi.digitalRead(22))and(wiringpi.digitalRead(23)) ):
 				currentControlMode = getNextControlMode(currentControlMode, controlModes)
+				print "switching to mode %i, %s" % (currentControlMode, controlModes[currentControlMode])
+				time.sleep(0.7)
 			else:
 				if(wiringpi.digitalRead(25)):
 					if(currentControlMode == 0):
@@ -94,7 +96,8 @@ if(__name__ == "__main__"):
 					if(currentControlMode == 0):
 						device.emit_click(uinput.BTN_RIGHT)
 					elif(currentControlMode == 1):	
-						device.emit_combo([uinput.KEY_LEFTCTRL,uinput.KEY_LEFTALT,uinput.KEY_RIGHT,])							
+						device.emit_click(uinput.KEY_TAB)
+						##device.emit_combo([uinput.KEY_LEFTCTRL,uinput.KEY_LEFTALT,uinput.KEY_RIGHT,])							
 					## Square Button (Left of centre on NA model PSPs)	
 				if(wiringpi.digitalRead(23)):
 					if(currentControlMode == 0):
