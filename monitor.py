@@ -55,7 +55,7 @@ if(__name__ == "__main__"):
 			time.sleep(0.10)
 			
 			
-			if( (not wiringpi.digitalRead(22))and(not wiringpi.digitalRead(22)) ):
+			if( (not wiringpi.digitalRead(22))and(wiringpi.digitalRead(23)) ):
 				currentControlMode = getNextControlMode(currentControlMode, controlModes)
 			else:
 				if(wiringpi.digitalRead(25)):
