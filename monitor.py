@@ -36,7 +36,7 @@ if(__name__ == "__main__"):
 	pinsRange = [21, 22, 23, 24, 25, 26, 27, 28, 29]
 	
 	
-	events = (uinput.REL_X, uinput.REL_Y, uinput.BTN_LEFT, uinput.BTN_RIGHT, uinput.KEY_ESC)
+	events = (uinput.REL_X, uinput.REL_Y, uinput.BTN_LEFT, uinput.BTN_RIGHT, uinput.KEY_ESC, uinput.KEY_LEFT, uinput.KEY_RIGHT, uinput.KEY_UP, uinput.KEY_DOWN, uinput.KEY_TAB, uinput.KEY_ENTER)
 	
 	for i in pinsRange:
 		wiringpi.pinMode(i, 0)
