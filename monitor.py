@@ -76,7 +76,9 @@ if(__name__ == "__main__"):
 					if(currentControlMode == 0):
 						device.emit(uinput.REL_Y, 9)
 					elif(currentControlMode == 1):	
-						device.emit_click(uinput.KEY_DOWN)						
+						device.emit_click(uinput.KEY_DOWN)	
+						print "doing a key down"	
+						time.sleep(0.5)			
 					## down
 				if(wiringpi.digitalRead(27)):
 					if(currentControlMode == 0):
