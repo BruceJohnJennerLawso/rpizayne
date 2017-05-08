@@ -19,6 +19,13 @@ def clearTerminal(x):
 	sys.stdout.write("\x1b[2J\x1b[H");
 
 
+def getNextControlMode(currentControlMode, controlModes):
+	for i in range(0, len(controlModes.keys())):
+		if(i >= len(controlModes.keys())-1):
+			return 0
+		else:
+			return currentControlMode+1
+
 if(__name__ == "__main__"):
 	## remember to run
 	
@@ -35,6 +42,8 @@ if(__name__ == "__main__"):
 		wiringpi.pinMode(i, 0)
 	## sets GPIO 1 to input
 
+	currentControlMode = 0
+	controlModes = {0: 'virtual_mouse', 1:'virtual_keypad'}
 
 	with uinput.Device(events) as device:
 		device.emit(uinput.REL_Y, -100)
@@ -43,30 +52,54 @@ if(__name__ == "__main__"):
 		while(True):
 			for i in pinsRange:
 				print "%i: %r" % (i, wiringpi.digitalRead(i))
-			time.sleep(0.05)
+			time.sleep(0.10)
 			
-			if(wiringpi.digitalRead(25)):
-				device.emit(uinput.REL_X, -5)
-				## left	
-			if(wiringpi.digitalRead(28)):
-				device.emit(uinput.REL_X, 5)	
-				## right	
-			if(wiringpi.digitalRead(29)):
-				device.emit(uinput.REL_Y, 5)
-				## down
-			if(wiringpi.digitalRead(27)):
-				device.emit(uinput.REL_Y, -5)
-				## up
+			
+			if( (not wiringpi.digitalRead(22))and(not wiringpi.digitalRead(22)) ):
+				currentControlMode = getNextControlMode(currentControlMode, controlModes)
+			else:
+				if(wiringpi.digitalRead(25)):
+					if(currentControlMode == 0):
+						device.emit(uinput.REL_X, -9)
+					elif(currentControlMode == 1):	
+						device.emit_click(uinput.KEY_LEFT)
+					## left	
+				if(wiringpi.digitalRead(28)):
+					if(currentControlMode == 0):
+						device.emit(uinput.REL_X, 9)	
+					elif(currentControlMode == 1):	
+						device.emit_click(uinput.KEY_RIGHT)	
+					## right	
+				if(wiringpi.digitalRead(29)):
+					if(currentControlMode == 0):
+						device.emit(uinput.REL_Y, 9)
+					elif(currentControlMode == 1):	
+						device.emit_click(uinput.KEY_DOWN)						
+					## down
+				if(wiringpi.digitalRead(27)):
+					if(currentControlMode == 0):
+						device.emit(uinput.REL_Y, -9)
+					elif(currentControlMode == 1):	
+						device.emit_click(uinput.KEY_UP)						
+					## up
+					
 				
-				
-			if(not wiringpi.digitalRead(22)):
-				device.emit_click(uinput.BTN_LEFT)
-				## up	
-			if(wiringpi.digitalRead(24)):
-				device.emit_click(uinput.BTN_RIGHT)
-				## up	
-			if(wiringpi.digitalRead(23)):
-				device.emit_click(uinput.KEY_ESC)
-				## up		
-			##device.emit(uinput.REL_X, 5, syn=False)
+				if(not wiringpi.digitalRead(22)):
+					if(currentControlMode == 0):
+						device.emit_click(uinput.BTN_LEFT)
+					elif(currentControlMode == 1):	
+						device.emit_click(uinput.KEY_ENTER)							
+					## X button
+				if(wiringpi.digitalRead(24)):
+					if(currentControlMode == 0):
+						device.emit_click(uinput.BTN_RIGHT)
+					elif(currentControlMode == 1):	
+						device.emit_combo([uinput.KEY_LEFTCTRL,uinput.KEY_LEFTALT,uinput.KEY_RIGHT,])							
+					## Square Button (Left of centre on NA model PSPs)	
+				if(wiringpi.digitalRead(23)):
+					if(currentControlMode == 0):
+						device.emit_click(uinput.KEY_ESC)
+					## the R-trigger, the only working trigger at the moment
+				##device.emit(uinput.REL_X, 5, syn=False)
 			sys.stdout.write("\x1b[2J\x1b[H");
+			print currentControlMode, controlModes[currentControlMode]
