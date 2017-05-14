@@ -129,6 +129,8 @@ if(__name__ == "__main__"):
 				if(wiringpi.digitalRead(23)):
 					if(currentControlMode == 0):
 						cursorSpeed = 5
+					elif(currentControlMode == 1):
+						device.emit_click(uinput.KEY_ESC)							
 					elif(currentControlMode == 2):	
 						device.emit_click(uinput.KEY_DOWN)	
 					## the R-trigger, the only working trigger at the moment	
