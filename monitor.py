@@ -66,7 +66,7 @@ if(__name__ == "__main__"):
 			time.sleep(0.07)
 			
 			
-			if( (not wiringpi.digitalRead(23))and(wiringpi.digitalRead(24)) ):
+			if( (wiringpi.digitalRead(23))and(wiringpi.digitalRead(24)) ):
 				##if(wiringpi.digitalRead(1)):
 				## the combo was working fine here
 				currentControlMode = getNextControlMode(currentControlMode, controlModes)
